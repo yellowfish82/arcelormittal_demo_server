@@ -1,14 +1,6 @@
-const mysql = require('./runningdb/mysql');
 const sqlite = require('./runningdb/sqlite');
 
 const config = require('../../config');
-const ThingImages = require('./ormapping/thingImages');
-const EquityDefine = require('./ormapping/equitydef');
-const User = require('./ormapping/user');
-const Poster = require('./ormapping/poster');
-const Currency = require('./ormapping/currency');
-const Transfer = require('./ormapping/transfer');
-const Wallet = require('./ormapping/wallet');
 
 const add = async (sql) => {
   console.log(`operation database create something ${sql}`);

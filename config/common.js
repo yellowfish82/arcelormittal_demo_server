@@ -6,10 +6,10 @@ const common = {
   auth_white_list_inner: [
     '/v2.1.1/co/login',
     '/v2.1.1/product/all/category',
-    '/v2.1.1/product/query',
+    '/v2.1.1/product/query'
   ],
   auth_white_list_outer: [
-    `/v2.1.1/co/login`,
+    `/v2.1.1/co/login`
   ],
   session_invalid_status: 418,
   secret: 'ccesecret',

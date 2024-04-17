@@ -18,9 +18,9 @@ describe('Use JEST to test an Spicefactory Restful API based on Express', () => 
 
   });
 
-  describe(`operation RDS mysql service`, () => {
-    test('insert RDS mysql', async () => {
-      expect(configurations.db.type).toEqual('mysql');
+  describe(`operation RDS sqlite service`, () => {
+    test('insert RDS sqlite', async () => {
+      expect(configurations.db.type).toEqual('sqlite');
       let e = undefined;
       try {
         const orgEntity = new Org();
@@ -51,7 +51,7 @@ describe('Use JEST to test an Spicefactory Restful API based on Express', () => 
       expect(e).toBeUndefined();
     });
 
-    test('update & get by id RDS mysql', async () => {
+    test('update & get by id RDS sqlite', async () => {
       const { userId, originalpwd, } = datapool;
       const userEntity = new User();
       const pwd = chance.string({ length: 5, });
@@ -66,7 +66,7 @@ describe('Use JEST to test an Spicefactory Restful API based on Express', () => 
       expect(user.pwd).not.toEqual(originalpwd);
     });
 
-    test('query RDS mysql', async () => {
+    test('query RDS sqlite', async () => {
       const { userId, userName, } = datapool;
       const userEntity = new User();
       userEntity.setValue({
@@ -79,14 +79,14 @@ describe('Use JEST to test an Spicefactory Restful API based on Express', () => 
       expect(userSet.result.length > 0).toEqual(true);
     });
 
-    test('query view RDS mysql', async () => {
+    test('query view RDS sqlite', async () => {
       const coinaccount = await service.dbService.getViewById('coinAccountView', configurations.common.spicefactory_account.BTH);
       expect(coinaccount).not.toBeUndefined();
       expect(coinaccount.owner).not.toBeUndefined();
       expect(coinaccount.ownerName).not.toBeUndefined();
     });
 
-    test('delete RDS mysql', async () => {
+    test('delete RDS sqlite', async () => {
       const { userId, } = datapool;
       const userEntity = new User();
       userEntity.setValue({

@@ -1,5 +1,4 @@
 const service = require('../service');
-const serviceUtils = require('../service/utils');
 const configurations = require('../config');
 
 /**
@@ -28,13 +27,13 @@ class BaseCtrler {
   checkIsInWhitelist = (innerCall, url) => {
     let found;
     if (innerCall) {
-      found = configurations.common.auth_white_list_inner.find(l => url.startsWith(l));
+      found = configurations.common.auth_white_list_inner.find((l) => url.startsWith(l));
     } else {
-      found = configurations.common.auth_white_list_outer.find(l => url.startsWith(l));
+      found = configurations.common.auth_white_list_outer.find((l) => url.startsWith(l));
     }
 
     return !!found;
-  }
+  };
 
   verifyAccessRight = async (req) => {
     let result = {

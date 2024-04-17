@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { String, Number, Boolean, Mixed, Array } = mongoose.Schema.Types;
+const { String, Number, Boolean, Mixed, Array, } = mongoose.Schema.Types;
 
 const db = {
   type: process.env.CCE_DB_TYPE || 'sqlite',
@@ -31,7 +31,7 @@ const db = {
     indexSeq: Number, // -1 unuse
     indexWay: Number, // 1, ascending; -1 descending; 0 unuse
     followingDivider: Boolean,
-    range: {  // max and min all < 0 means unuse range
+    range: { // max and min all < 0 means unuse range
       max: Number,
       min: Number,
     },
@@ -44,30 +44,30 @@ const db = {
     isFile: Boolean,
   },
   default_schema: {
-    isDefault: Boolean
+    isDefault: Boolean,
   },
   schema_type: {
-    "String": {
+    'String': {
       label: 'String',
       value: String,
     },
-    "Number": {
+    'Number': {
       label: 'Number',
       value: Number,
     },
-    "Boolean": {
+    'Boolean': {
       label: 'Boolean',
       value: Boolean,
     },
-    "Mixed": {
+    'Mixed': {
       label: 'Mixed',
       value: Mixed,
     },
-    "Array": {
+    'Array': {
       label: 'Array',
       value: Array,
     },
-  }
+  },
 };
 
 module.exports = db;
