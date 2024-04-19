@@ -5,6 +5,18 @@ const common = {
   ],
   auth_white_list_outer: [
   ],
+  THING_STATUS: {
+    // 停转启停
+    STOP: 0,
+    RUNNING: 1,
+  },
+  CONDITION_EXPRESSION: {
+    EQUAL: 0, // =
+    LARGER: 0, // >
+    LARGER_EQUAL: 0, // >=
+    SMALLER: 0, // <
+    SMALLER_EQUAL: 0, // <=
+  },
 };
 
 module.exports = common;

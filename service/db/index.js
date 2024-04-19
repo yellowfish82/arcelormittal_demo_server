@@ -9,7 +9,8 @@ const add = async (sql) => {
 
     try {
         const db = await getSqliteDB();
-        await db.exec(sql);
+        const res = await db.exec(sql);
+        console.log(`insert result: ${res}`);
 
     } catch (error) {
         console.error(error);
