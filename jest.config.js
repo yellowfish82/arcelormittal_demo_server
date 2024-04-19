@@ -112,7 +112,7 @@ module.exports = {
     ['./node_modules/jest-html-reporter', {
       'pageTitle': 'ArcelorMittal Test Report',
       'includeFailureMsg': true,
-      'includeConsoleLog': true,
+      'includeConsoleLog': false,
     }]],
 
   // Automatically reset mock state before every test

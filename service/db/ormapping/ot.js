@@ -1,5 +1,5 @@
 const BaseEntity = require('./entity');
-const { columnType } = require('../../../config/db');
+const { columnType, } = require('../../../config/db');
 
 
 /**
@@ -12,17 +12,17 @@ const { columnType } = require('../../../config/db');
  *   );
  */
 class OT extends BaseEntity {
-    constructor() {
-        super();
-        this.tableName = 'ot';
-        this.columns = {
-            "id": columnType.NUMBER,
-            "timestamp": columnType.STRING,
-            "payload": columnType.JSON,
-            "thing_id": columnType.NUMBER,
-        };
-        this.pk = 'id';
-    }
+  constructor() {
+    super();
+    this.tableName = 'ot';
+    this.columns = {
+      'id': columnType.NUMBER,
+      'timestamp': columnType.STRING,
+      'payload': columnType.JSON,
+      'thing_id': columnType.NUMBER,
+    };
+    this.pk = 'id';
+  }
 }
 
 module.exports = OT;

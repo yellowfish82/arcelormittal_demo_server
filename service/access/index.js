@@ -1,6 +1,5 @@
-const moment = require('moment');
-const dbService = require('../db');
-const serviceUtils = require('../utils');
+// const moment = require('moment');
+// const dbService = require('../db');
 const configurations = require('../../config');
 
 const bill = async (decryptoTokenResult, accessRecId) => {
@@ -29,7 +28,7 @@ const whoIsCalling = (req) => {
 };
 
 /**
- * only verify spicefactory calling and called API is not in white list
+ * only verify calling and called API is not in white list
  */
 const verifyToken = async (req, innerCall) => {
   const result = {

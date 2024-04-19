@@ -42,11 +42,12 @@ class BaseCtrler {
       err: undefined,
     };
 
-    let decryptoTokenResult;
+    // let decryptoTokenResult;
     try {
       const innerCall = service.accessService.whoIsCalling(req);
 
       const accessId = await service.accessService.recordAccess(req, innerCall);
+      console.log(`access id: ${accessId}`);
 
       const { originalUrl, } = req;
       const inWhitelist = this.checkIsInWhitelist(innerCall, originalUrl);

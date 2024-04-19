@@ -3,7 +3,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const configurations = require('./config');
 const mountRoutes = require('./routes');
-const path = require('path');
 
 const config = (app) => {
   app.all('*', (req, res, next) => {
@@ -18,9 +17,6 @@ const config = (app) => {
   app.use(bodyParser.json({ limit: 1850000, }));
   app.use(bodyParser.urlencoded({ limit: 1850000, extended: true, }));
 
-  // app.use(express.static(__dirname + configurations.common.StorePath));
-  app.use(express.static(path.resolve(__dirname, configurations.common.StorePath)));
-
   app.set('trust proxy', true);
 
   mountRoutes(app);
@@ -31,7 +27,7 @@ const start = () => {
   config(app);
 
   app.listen(configurations.env.port, () => {
-    console.log(`spice factory server listening on port ${configurations.env.port}`);
+    console.log(`Arcelor Mittal server listening on port ${configurations.env.port}`);
   });
 };
 
@@ -40,7 +36,7 @@ const fetchApp = (port) => {
   config(app);
 
   return app.listen(port || configurations.env.port, () => {
-    console.log(`spice factory server listening on port ${port || configurations.env.port}`);
+    console.log(`Arcelor Mittal server listening on port ${port || configurations.env.port}`);
   });
 };
 

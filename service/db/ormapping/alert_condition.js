@@ -1,5 +1,5 @@
 const BaseEntity = require('./entity');
-const { columnType } = require('../../../config/db');
+const { columnType, } = require('../../../config/db');
 
 
 /**
@@ -14,18 +14,18 @@ const { columnType } = require('../../../config/db');
  *   );
  */
 class AlertCondition extends BaseEntity {
-    constructor() {
-        super();
-        this.tableName = 'alert_condition';
-        this.columns = {
-            "id": columnType.NUMBER,
-            "thing_model_id": columnType.NUMBER,
-            "property_id": columnType.NUMBER,
-            "expression": columnType.NUMBER,
-            "threshold": columnType.NUMBER,
-        };
-        this.pk = 'id';
-    }
+  constructor() {
+    super();
+    this.tableName = 'alert_condition';
+    this.columns = {
+      'id': columnType.NUMBER,
+      'thing_model_id': columnType.NUMBER,
+      'property_id': columnType.NUMBER,
+      'expression': columnType.NUMBER,
+      'threshold': columnType.NUMBER,
+    };
+    this.pk = 'id';
+  }
 }
 
 module.exports = AlertCondition;

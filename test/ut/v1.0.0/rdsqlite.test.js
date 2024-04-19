@@ -1,4 +1,3 @@
-
 const Chance = require('chance');
 const chance = new Chance();
 
@@ -18,7 +17,7 @@ describe('Use JEST to test CRUD SQLite in Express', () => {
   });
 
   describe(`operation RDS sqlite service`, () => {
-    test('insert RDS sqlite', async () => {
+    test('insert and query RDS sqlite', async () => {
       expect(configurations.db.type).toEqual('sqlite');
       let e = undefined;
       try {
@@ -31,14 +30,16 @@ describe('Use JEST to test CRUD SQLite in Express', () => {
         });
         await service.dbService.add(thingModelEntity.insertSQL());
 
-        // userEntity.setValue({
-        //   name,
-        // });
-        // const userId = await service.dbService.add(userEntity.insertSQL());
+        thingModelEntity.setValue({
+          name,
+        });
 
-        // datapool['userId'] = userId;
-        // datapool['userName'] = name;
-        // datapool['originalpwd'] = pwd;
+        const thingModels = await service.dbService.query(thingModelEntity.querySQL());
+        expect(Array.isArray(thingModels.result)).toEqual(true);
+        expect(thingModels.result.length > 0).toEqual(true);
+
+        datapool['id'] = thingModels.result[0].id;
+        datapool['name'] = thingModels.result[0].name;
       } catch (error) {
         e = error;
       }
@@ -47,52 +48,32 @@ describe('Use JEST to test CRUD SQLite in Express', () => {
     });
 
     test('update & get by id RDS sqlite', async () => {
-      // const { userId, originalpwd, } = datapool;
-      // const userEntity = new User();
-      // const pwd = chance.string({ length: 5, });
-      // userEntity.setValue({
-      //   id: userId,
-      //   pwd,
-      // });
-      // await service.dbService.update(userEntity.updateSQL());
+      const { id, name, } = datapool;
+      const thingModelEntity = new ThingModel();
+      const newName = chance.word();
+      thingModelEntity.setValue({
+        id,
+        name: newName,
+      });
+      await service.dbService.update(thingModelEntity.updateSQL());
 
-      // const user = await service.dbService.getById(new User(), userId);
-      // expect(user).not.toBeUndefined();
-      // expect(user.pwd).not.toEqual(originalpwd);
-    });
-
-    test('query RDS sqlite', async () => {
-      // const { userId, userName, } = datapool;
-      // const userEntity = new User();
-      // userEntity.setValue({
-      //   id: userId,
-      //   name: userName,
-      // });
-      // const userSet = await service.dbService.query(userEntity.querySQL());
-      // expect(userSet).not.toBeUndefined();
-      // expect(Array.isArray(userSet.result)).toEqual(true);
-      // expect(userSet.result.length > 0).toEqual(true);
-    });
-
-    test('query view RDS sqlite', async () => {
-      // const coinaccount = await service.dbService.getViewById('coinAccountView', configurations.common.spicefactory_account.BTH);
-      // expect(coinaccount).not.toBeUndefined();
-      // expect(coinaccount.owner).not.toBeUndefined();
-      // expect(coinaccount.ownerName).not.toBeUndefined();
+      const thingModel = await service.dbService.getById(new ThingModel(), id);
+      expect(thingModel).not.toBeUndefined();
+      expect(thingModel.name).not.toEqual(name);
+      expect(thingModel.name).toEqual(newName);
     });
 
     test('delete RDS sqlite', async () => {
-      // const { userId, } = datapool;
-      // const userEntity = new User();
-      // userEntity.setValue({
-      //   id: userId,
-      // });
-      // await service.dbService.del(userEntity.delSQL());
+      const { id, } = datapool;
+      const thingModelEntity = new ThingModel();
+      thingModelEntity.setValue({
+        id,
+      });
+      await service.dbService.del(thingModelEntity.delSQL());
 
-      // const userSet = await service.dbService.query(userEntity.querySQL());
-      // expect(userSet).not.toBeUndefined();
-      // expect(Array.isArray(userSet.result)).toEqual(true);
-      // expect(userSet.result.length === 0).toEqual(true);
+      const thingModels = await service.dbService.query(thingModelEntity.querySQL());
+      expect(Array.isArray(thingModels.result)).toEqual(true);
+      expect(thingModels.result.length == 0).toEqual(true);
     });
   });
 });

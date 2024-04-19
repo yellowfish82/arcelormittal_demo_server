@@ -1,5 +1,5 @@
 const BaseEntity = require('./entity');
-const { columnType } = require('../../../config/db');
+const { columnType, } = require('../../../config/db');
 
 
 /**
@@ -16,21 +16,21 @@ const { columnType } = require('../../../config/db');
  *   );
  */
 class ThingInstance extends BaseEntity {
-    constructor() {
-        super();
-        this.tableName = 'thing_instance';
-        this.columns = {
-            "id": columnType.NUMBER,
-            "thing_model_id": columnType.NUMBER,
-            "sn": columnType.STRING,
-            "key": columnType.STRING,
-            "status": columnType.NUMBER,
-            "name": columnType.STRING,
-            "brand": columnType.STRING,
-            "note": columnType.STRING,
-        };
-        this.pk = 'id';
-    }
+  constructor() {
+    super();
+    this.tableName = 'thing_instance';
+    this.columns = {
+      'id': columnType.NUMBER,
+      'thing_model_id': columnType.NUMBER,
+      'sn': columnType.STRING,
+      'key': columnType.STRING,
+      'status': columnType.NUMBER,
+      'name': columnType.STRING,
+      'brand': columnType.STRING,
+      'note': columnType.STRING,
+    };
+    this.pk = 'id';
+  }
 }
 
 module.exports = ThingInstance;
