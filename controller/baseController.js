@@ -44,18 +44,11 @@ class BaseCtrler {
 
     let decryptoTokenResult;
     try {
-      // console.log(`verifyAccessRight whoIsCalling`);
       const innerCall = service.accessService.whoIsCalling(req);
-      // console.log(`verifyAccessRight recordAccess`);
+
       const accessId = await service.accessService.recordAccess(req, innerCall);
 
       const { originalUrl, } = req;
-
-      // console.log(`verifyAccessRight innerCall? ${innerCall}`);
-      // console.log(`verifyAccessRight originalUrl? ${originalUrl}`);
-      // console.log(`verifyAccessRight in inner white list? ${configurations.common.auth_white_list_inner.indexOf(originalUrl)}`);
-      // console.log(`verifyAccessRight in outer white list? ${configurations.common.auth_white_list_outer.indexOf(originalUrl)}`);
-
       const inWhitelist = this.checkIsInWhitelist(innerCall, originalUrl);
 
       if (!inWhitelist) {
@@ -64,25 +57,13 @@ class BaseCtrler {
         // console.log(`verifyAccessRight after verify token`);
         result = tokeyVerifyResult.result;
         // console.log(`verifyAccessRight after verify token ${result}`);
-        decryptoTokenResult = tokeyVerifyResult.decryptoTokenResult;
-        // console.log(`verifyAccessRight after decryptoTokenResult ${decryptoTokenResult}`);
       }
-
-      /*
-      // console.log(`verifyAccessRight verifyToken pass? ${result.pass}, is innerCall? ${innerCall}`);
-      if (result.pass && !innerCall && configurations.common.auth_white_list_outer.indexOf(originalUrl) < 0) {
-        // console.log(`verifyAccessRight bill`);
-        // TODO
-        await service.accessService.bill(decryptoTokenResult, accessId);
-      }
-      */
     } catch (error) {
       result.pass = false;
       result.status = 400;
       result.err = `${error}`;
     }
 
-    // console.log(`verifyAccessRight return verify result: ${JSON.stringify(result)}`);
     return result;
   };
 
