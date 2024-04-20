@@ -87,9 +87,9 @@ const queryView = async (viewName, condition) => {
   const queryResultSet = queryResult ? queryResult.result : [];
 
   if (queryResultSet.length === 0) {
-    throw new Error(`can not find any records in view ${viewName} by id(${id})`);
+    throw new Error(`can not find any records in view ${viewName}`);
   } else if (resultSet.length > 1) {
-    throw new Error(`find more than 1 records in view ${viewName} by id(${id})`);
+    throw new Error(`find more than 1 records in view ${viewName}`);
   }
 
   return resultSet[0];

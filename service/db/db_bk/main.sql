@@ -54,12 +54,6 @@ CREATE TABLE "ot" (
 );
 
 -- ----------------------------
--- Table structure for sqlite_sequence
--- ----------------------------
-DROP TABLE IF EXISTS "sqlite_sequence";
-CREATE TABLE sqlite_sequence(name,seq);
-
--- ----------------------------
 -- Table structure for thing_instance
 -- ----------------------------
 DROP TABLE IF EXISTS "thing_instance";

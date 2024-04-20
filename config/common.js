@@ -11,11 +11,11 @@ const common = {
     RUNNING: 1,
   },
   CONDITION_EXPRESSION: {
-    EQUAL: 0, // =
-    LARGER: 0, // >
-    LARGER_EQUAL: 0, // >=
-    SMALLER: 0, // <
-    SMALLER_EQUAL: 0, // <=
+    EQUAL: 1, // =
+    LARGER: 2, // >
+    LARGER_EQUAL: 3, // >=
+    SMALLER: 4, // <
+    SMALLER_EQUAL: 5, // <=
   },
 };
 
