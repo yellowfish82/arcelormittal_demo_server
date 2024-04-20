@@ -27,7 +27,7 @@ router.delete('/:id', async (req, res, next) => {
     }
 });
 
-router.get('/:id', async (req, res, next) => {
+router.get('/get/:id', async (req, res, next) => {
     try {
         const result = await controllers.thing.getModel(req);
 

@@ -10,7 +10,7 @@
  Target Server Version : 3035005
  File Encoding         : 65001
 
- Date: 20/04/2024 17:46:49
+ Date: 21/04/2024 07:00:48
 */
 
 PRAGMA foreign_keys = false;
@@ -54,6 +54,12 @@ CREATE TABLE "ot" (
 );
 
 -- ----------------------------
+-- Table structure for sqlite_sequence
+-- ----------------------------
+DROP TABLE IF EXISTS "sqlite_sequence";
+CREATE TABLE sqlite_sequence(name,seq);
+
+-- ----------------------------
 -- Table structure for thing_instance
 -- ----------------------------
 DROP TABLE IF EXISTS "thing_instance";
@@ -66,6 +72,7 @@ CREATE TABLE "thing_instance" (
   "name" TEXT(300) NOT NULL,
   "brand" TEXT(300) NOT NULL,
   "note" TEXT(500),
+  "frequency" integer DEFAULT 2,
   FOREIGN KEY ("thing_model_id") REFERENCES "thing_model" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -127,10 +134,7 @@ FROM
 -- ----------------------------
 -- Auto increment value for alert_condition
 -- ----------------------------
-
--- ----------------------------
--- Auto increment value for ot
--- ----------------------------
+UPDATE "main"."sqlite_sequence" SET seq = 26 WHERE name = 'alert_condition';
 
 -- ----------------------------
 -- Auto increment value for thing_instance
@@ -139,6 +143,11 @@ FROM
 -- ----------------------------
 -- Auto increment value for thing_model
 -- ----------------------------
-UPDATE "main"."sqlite_sequence" SET seq = 13 WHERE name = 'thing_model';
+UPDATE "main"."sqlite_sequence" SET seq = 25 WHERE name = 'thing_model';
+
+-- ----------------------------
+-- Auto increment value for thing_model_properties
+-- ----------------------------
+UPDATE "main"."sqlite_sequence" SET seq = 64 WHERE name = 'thing_model_properties';
 
 PRAGMA foreign_keys = true;

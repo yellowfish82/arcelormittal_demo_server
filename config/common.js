@@ -17,6 +17,7 @@ const common = {
     SMALLER: 4, // <
     SMALLER_EQUAL: 5, // <=
   },
+  MQTT_TOPIC: 'ARCELOR_MITTAL_DEMO_TOPIC',
 };
 
 module.exports = common;

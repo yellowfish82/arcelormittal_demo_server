@@ -53,6 +53,7 @@ describe('Use JEST to test an Arcelor Mittal Demo Restful API based on Express',
 
       const response = await request(app).post(`/${v}/tm`).send(thingModel);
       expect(response.statusCode).toBe(200);
+      console.error(response.error);
     });
   });
 });

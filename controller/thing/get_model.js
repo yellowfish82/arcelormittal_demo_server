@@ -1,13 +1,17 @@
 const service = require('../../service');
 const BaseCtrler = require('../baseController');
 
+const ThingModel = require('../../service/db/ormapping/thing_model');
+
 class GetModelCtrler extends BaseCtrler {
   businessLogic = async (params) => {
-    // const { id, doctype, orgId, tokenUserName, } = params;
+    const { thing_model_id, } = params;
+
+    const thingModel = await service.dbService.getById(new ThingModel(), thing_model_id);
 
     return {
       status: 200,
-      info: { alertData: getModel, },
+      info: { thingModel },
     };
   };
 
@@ -21,9 +25,16 @@ class GetModelCtrler extends BaseCtrler {
       };
     }
 
+    if (req.params.id === undefined) {
+      return {
+        status: 400,
+        errMsg: 'did not specified query parameters',
+      };
+    }
+
     return {
       params: {
-
+        thing_model_id: parseInt(req.params.id)
       },
     };
   };
