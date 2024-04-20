@@ -1,13 +1,13 @@
 const service = require('../../service');
 const BaseCtrler = require('../baseController');
 
-class AlertDataCtrler extends BaseCtrler {
+class GetModelCtrler extends BaseCtrler {
   businessLogic = async (params) => {
     // const { id, doctype, orgId, tokenUserName, } = params;
 
     return {
       status: 200,
-      info: { alertData, },
+      info: { alertData: getModel, },
     };
   };
 
@@ -32,17 +32,17 @@ class AlertDataCtrler extends BaseCtrler {
 let ctrlerInstance;
 const getCtrlerInstance = () => {
   if (!ctrlerInstance) {
-    ctrlerInstance = new AlertDataCtrler();
+    ctrlerInstance = new GetModelCtrler();
   }
 
   return ctrlerInstance;
 };
 
-const alertData = async (req) => {
+const getModel = async (req) => {
   getCtrlerInstance();
 
   const result = await ctrlerInstance.ctrl(req);
 
   return result;
 };
-module.exports = alertData;
+module.exports = getModel;

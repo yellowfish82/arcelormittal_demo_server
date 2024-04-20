@@ -51,7 +51,7 @@ router.get('/query', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
     try {
-        const result = await controllers.thing.updateModel(req);
+        const result = await controllers.thing.updateInstance(req);
 
         const { status, message, } = result;
         res.status(status).send(message);
