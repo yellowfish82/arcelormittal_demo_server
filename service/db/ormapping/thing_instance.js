@@ -12,6 +12,7 @@ const { columnType, } = require('../../../config/db');
  *     "name" TEXT(300) NOT NULL,
  *     "brand" TEXT(300) NOT NULL,
  *     "note" TEXT(500),
+ *     "frequency" integer DEFAULT 2,
  *     FOREIGN KEY ("thing_model_id") REFERENCES "thing_model" ("id") ON DELETE CASCADE ON UPDATE CASCADE
  *   );
  */
@@ -28,6 +29,7 @@ class ThingInstance extends BaseEntity {
       'name': columnType.STRING,
       'brand': columnType.STRING,
       'note': columnType.STRING,
+      'frequency': columnType.NUMBER,
     };
     this.pk = 'id';
   }

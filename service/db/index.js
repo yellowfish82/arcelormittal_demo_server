@@ -70,7 +70,7 @@ const getSqliteDB = async () => {
   return db;
 };
 
-const getViewById = async (viewName, id) => {
+const queryView = async (viewName, condition) => {
   if (!viewName) {
     throw new Error(`view name should be given`);
   }
@@ -79,14 +79,17 @@ const getViewById = async (viewName, id) => {
     throw new Error(`id can not be null/undefined`);
   }
 
-  const querySQL = `SELECT * FROM ${viewName} where id=${id}`;
+  let querySQL = `SELECT * FROM ${viewName}`;
+  if (condition) {
+    querySQL += ` where ${condition}`;
+  }
   const queryResult = await query(querySQL);
   const queryResultSet = queryResult ? queryResult.result : [];
 
   if (queryResultSet.length === 0) {
-    throw new Error(`can not find any records in view ${viewName} by id(${id})`);
+    throw new Error(`can not find any records in view ${viewName}`);
   } else if (resultSet.length > 1) {
-    throw new Error(`find more than 1 records in view ${viewName} by id(${id})`);
+    throw new Error(`find more than 1 records in view ${viewName}`);
   }
 
   return resultSet[0];
@@ -120,7 +123,7 @@ const dbService = {
   query,
   update,
   getById,
-  getViewById,
+  queryView,
 };
 
 module.exports = dbService;

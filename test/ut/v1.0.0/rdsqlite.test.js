@@ -28,6 +28,7 @@ describe('Use JEST to test CRUD SQLite in Express', () => {
           name,
           description,
         });
+
         await service.dbService.add(thingModelEntity.insertSQL());
 
         thingModelEntity.setValue({

@@ -10,7 +10,7 @@
  Target Server Version : 3035005
  File Encoding         : 65001
 
- Date: 19/04/2024 23:09:37
+ Date: 21/04/2024 07:00:48
 */
 
 PRAGMA foreign_keys = false;
@@ -47,11 +47,17 @@ CREATE TABLE "alert_data" (
 DROP TABLE IF EXISTS "ot";
 CREATE TABLE "ot" (
   "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-  "timestamp" text(13) NOT NULL,
+  "timestamp" integer NOT NULL,
   "payload" TEXT(900) NOT NULL,
   "thing_id" integer,
   FOREIGN KEY ("thing_id") REFERENCES "thing_instance" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+-- ----------------------------
+-- Table structure for sqlite_sequence
+-- ----------------------------
+DROP TABLE IF EXISTS "sqlite_sequence";
+CREATE TABLE sqlite_sequence(name,seq);
 
 -- ----------------------------
 -- Table structure for thing_instance
@@ -66,6 +72,7 @@ CREATE TABLE "thing_instance" (
   "name" TEXT(300) NOT NULL,
   "brand" TEXT(300) NOT NULL,
   "note" TEXT(500),
+  "frequency" integer DEFAULT 2,
   FOREIGN KEY ("thing_model_id") REFERENCES "thing_model" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -91,12 +98,6 @@ CREATE TABLE "thing_model_properties" (
   "max" integer(10) NOT NULL,
   FOREIGN KEY ("thing_model_id") REFERENCES "thing_model" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
-
--- ----------------------------
--- Table structure for sqlite_sequence
--- ----------------------------
-DROP TABLE IF EXISTS "sqlite_sequence";
-CREATE TABLE sqlite_sequence(name,seq);
 
 -- ----------------------------
 -- View structure for alert_data_view
@@ -133,13 +134,20 @@ FROM
 -- ----------------------------
 -- Auto increment value for alert_condition
 -- ----------------------------
-
--- ----------------------------
--- Auto increment value for ot
--- ----------------------------
+UPDATE "main"."sqlite_sequence" SET seq = 26 WHERE name = 'alert_condition';
 
 -- ----------------------------
 -- Auto increment value for thing_instance
 -- ----------------------------
+
+-- ----------------------------
+-- Auto increment value for thing_model
+-- ----------------------------
+UPDATE "main"."sqlite_sequence" SET seq = 25 WHERE name = 'thing_model';
+
+-- ----------------------------
+-- Auto increment value for thing_model_properties
+-- ----------------------------
+UPDATE "main"."sqlite_sequence" SET seq = 64 WHERE name = 'thing_model_properties';
 
 PRAGMA foreign_keys = true;

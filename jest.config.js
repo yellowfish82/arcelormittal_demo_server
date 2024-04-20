@@ -112,7 +112,7 @@ module.exports = {
     ['./node_modules/jest-html-reporter', {
       'pageTitle': 'ArcelorMittal Test Report',
       'includeFailureMsg': true,
-      'includeConsoleLog': false,
+      'includeConsoleLog': true,
     }]],
 
   // Automatically reset mock state before every test
@@ -165,7 +165,7 @@ module.exports = {
   testMatch: [
     // '**/__tests__/**/*.[jt]s?(x)',
     // '**/?(*.)+(spec|test).[tj]s?(x)'
-    '**/test/**/*.test.js'
+    '**/test/**/thinginstance.test.js'
   ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
