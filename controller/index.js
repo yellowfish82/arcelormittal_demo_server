@@ -1,8 +1,8 @@
-const ot = require('./ot');
+const data = require('./data');
 const thing = require('./thing');
 
 const controllers = {
-  ot,
+  data,
   thing,
 };
 

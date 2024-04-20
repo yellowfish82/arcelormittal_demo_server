@@ -6,9 +6,9 @@ const router = new Router();
 
 module.exports = router;
 
-router.post('/login', async (req, res, next) => {
+router.get('/ot/history/:conditions', async (req, res, next) => {
   try {
-    const result = await controllers.quota.login(req);
+    const result = await controllers.data.otHistory(req);
 
     const { status, message, } = result;
     res.status(status).send(message);
@@ -17,9 +17,9 @@ router.post('/login', async (req, res, next) => {
   }
 });
 
-router.get('/goods', async (req, res, next) => {
+router.get('/ot/rt/thing/:id', async (req, res, next) => {
   try {
-    const result = await controllers.quota.queryGoods(req);
+    const result = await controllers.data.otRealtime(req);
 
     const { status, message, } = result;
     res.status(status).send(message);
@@ -28,20 +28,9 @@ router.get('/goods', async (req, res, next) => {
   }
 });
 
-router.get('/good/:good_id', async (req, res, next) => {
+router.get('/alert/:conditions', async (req, res, next) => {
   try {
-    const result = await controllers.quota.getGood(req);
-
-    const { status, message, } = result;
-    res.status(status).send(message);
-  } catch (error) {
-    next(error);
-  }
-});
-
-router.put('/good', async (req, res, next) => {
-  try {
-    const result = await controllers.quota.updateGood(req);
+    const result = await controllers.data.alertData(req);
 
     const { status, message, } = result;
     res.status(status).send(message);
