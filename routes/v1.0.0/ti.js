@@ -38,7 +38,7 @@ router.get('/get/:id', async (req, res, next) => {
     }
 });
 
-router.get('/query', async (req, res, next) => {
+router.get('/query/:conditions', async (req, res, next) => {
     try {
         const result = await controllers.thing.queryInstances(req);
 
