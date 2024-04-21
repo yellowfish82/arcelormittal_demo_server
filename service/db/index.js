@@ -75,10 +75,6 @@ const queryView = async (viewName, condition) => {
     throw new Error(`view name should be given`);
   }
 
-  if (id === undefined) {
-    throw new Error(`id can not be null/undefined`);
-  }
-
   let querySQL = `SELECT * FROM ${viewName}`;
   if (condition) {
     querySQL += ` where ${condition}`;
@@ -86,13 +82,7 @@ const queryView = async (viewName, condition) => {
   const queryResult = await query(querySQL);
   const queryResultSet = queryResult ? queryResult.result : [];
 
-  if (queryResultSet.length === 0) {
-    throw new Error(`can not find any records in view ${viewName}`);
-  } else if (resultSet.length > 1) {
-    throw new Error(`find more than 1 records in view ${viewName}`);
-  }
-
-  return resultSet[0];
+  return queryResultSet;
 };
 
 const getById = async (o, id) => {

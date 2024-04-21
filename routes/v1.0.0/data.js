@@ -17,7 +17,7 @@ router.get('/ot/history/:conditions', async (req, res, next) => {
   }
 });
 
-router.get('/ot/rt/thing/:id', async (req, res, next) => {
+router.get('/ot/rt/:id', async (req, res, next) => {
   try {
     const result = await controllers.data.otRealtime(req);
 

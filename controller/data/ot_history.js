@@ -10,7 +10,7 @@ class OTHistoryCtrler extends BaseCtrler {
     otEntity.setValue({
       thing_id
     });
-    const sql = otEntity.querySQL() + ` AND timestamp BETWEEN ${starttime} AND ${endtime}`;
+    const sql = otEntity.querySQL();
     const otData = await service.dbService.query(sql);
 
     return {
@@ -32,8 +32,8 @@ class OTHistoryCtrler extends BaseCtrler {
     return {
       params: {
         thing_id,
-        starttime,
-        endtime,
+        // starttime,
+        // endtime,
       },
     };
   };

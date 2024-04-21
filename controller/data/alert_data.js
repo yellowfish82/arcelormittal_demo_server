@@ -3,10 +3,10 @@ const BaseCtrler = require('../baseController');
 
 class AlertDataCtrler extends BaseCtrler {
   businessLogic = async (params) => {
-    // const { id, doctype, orgId, tokenUserName, } = params;
+    const { thing_id, } = params;
     const viewName = 'alert_data_view';
-    const condition = `timestamp BETWEEN ${starttime} AND ${endtime}`;
-    const alertData = await service.dbService.queryView(viewName, condition);
+    // const condition = `timestamp BETWEEN ${starttime} AND ${endtime}`;
+    const alertData = await service.dbService.queryView(viewName, `thing_id = '${thing_id}' ORDER BY timestamp DESC`);
 
     return {
       status: 200,
@@ -24,11 +24,20 @@ class AlertDataCtrler extends BaseCtrler {
       };
     }
 
+    if (!req.params.conditions) {
+      return {
+        status: 400,
+        errMsg: 'did not specified query parameters',
+      };
+    }
+
+    const { thing_id } = JSON.parse(req.params.conditions);
+
     return {
       params: {
-        thingId,
-        starttime,
-        endtime,
+        thing_id,
+        // starttime,
+        // endtime,
       },
     };
   };
