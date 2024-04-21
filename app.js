@@ -1,5 +1,6 @@
 const express = require('express');
 // const cors = require('cors');
+const mqtt = require('mqtt');
 const bodyParser = require('body-parser');
 const configurations = require('./config');
 const mountRoutes = require('./routes');

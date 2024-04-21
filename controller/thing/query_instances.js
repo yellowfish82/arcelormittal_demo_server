@@ -1,13 +1,20 @@
 const service = require('../../service');
 const BaseCtrler = require('../baseController');
 
+const ThingInstance = require('../../service/db/ormapping/thing_instance');
+
 class QueryInstancesCtrler extends BaseCtrler {
   businessLogic = async (params) => {
-    // const { id, doctype, orgId, tokenUserName, } = params;
+    const { conditions } = params;
+
+    const thingEntity = new ThingInstance();
+    thingEntity.setValue(conditions);
+
+    const thingSet = await service.dbService.query(thingEntity.querySQL());
 
     return {
       status: 200,
-      info: { alertData: queryInstances, },
+      info: { things: thingSet.result },
     };
   };
 
@@ -21,9 +28,14 @@ class QueryInstancesCtrler extends BaseCtrler {
       };
     }
 
+    let conditions = {};
+    if (req.params.conditions) {
+      conditions = JSON.parse(req.params.conditions);
+    }
+
     return {
       params: {
-
+        conditions
       },
     };
   };

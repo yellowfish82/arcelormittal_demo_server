@@ -1,13 +1,17 @@
 const service = require('../../service');
 const BaseCtrler = require('../baseController');
 
+const ThingInstance = require('../../service/db/ormapping/thing_instance');
+
 class GetInstanceCtrler extends BaseCtrler {
   businessLogic = async (params) => {
-    // const { id, doctype, orgId, tokenUserName, } = params;
+    const { id, } = params;
+
+    const thing = await service.dbService.getById(new ThingInstance(), id);
 
     return {
       status: 200,
-      info: { alertData: getInstance, },
+      info: { thing, },
     };
   };
 
@@ -21,9 +25,16 @@ class GetInstanceCtrler extends BaseCtrler {
       };
     }
 
+    if (!req.params.id) {
+      return {
+        status: 400,
+        errMsg: 'did not specified target instance id',
+      };
+    }
+
     return {
       params: {
-
+        id: req.params.id,
       },
     };
   };
