@@ -18,7 +18,7 @@ class GetModelCtrler extends BaseCtrler {
     const propertySet = await service.dbService.query(propertyEntity.querySQL());
     thingModel['properties'] = propertySet.result;
 
-    const alertConditionEntity = new ThingModelProperties();
+    const alertConditionEntity = new AlertCondition();
     alertConditionEntity.setValue({
       thing_model_id: thingModel.id,
     });

@@ -10,12 +10,12 @@ class OTHistoryCtrler extends BaseCtrler {
     otEntity.setValue({
       thing_id
     });
-    const sql = otEntity.querySQL() + ` AND timestamp BETWEEN ${starttime} AND ${endtime}`;
+    const sql = otEntity.querySQL();
     const otData = await service.dbService.query(sql);
 
     return {
       status: 200,
-      info: { otData, },
+      info: { otData: otData.result, },
     };
   };
 
@@ -25,15 +25,24 @@ class OTHistoryCtrler extends BaseCtrler {
     if (!req.params) {
       return {
         status: 400,
-        errMsg: 'did not specified query parameters',
+        errMsg: 'did not specified query body',
       };
     }
 
+    if (!req.params.conditions) {
+      return {
+        status: 400,
+        errMsg: 'did not specified query conditions',
+      };
+    }
+
+    const conditions = JSON.parse(req.params.conditions);
+
     return {
       params: {
-        thing_id,
-        starttime,
-        endtime,
+        thing_id: conditions.thing_id,
+        // starttime,
+        // endtime,
       },
     };
   };

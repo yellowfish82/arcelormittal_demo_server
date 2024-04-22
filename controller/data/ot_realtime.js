@@ -10,12 +10,12 @@ class OTRealtimeCtrler extends BaseCtrler {
     otEntity.setValue({
       thing_id
     });
-    const sql = otEntity.querySQL() + ` ORDER BY timestamp DESC LIMIT 1;`;
+    const sql = otEntity.querySQL().slice(0, -1) + ` ORDER BY timestamp DESC LIMIT 1;`;
     const otData = await service.dbService.query(sql);
 
     return {
       status: 200,
-      info: { otData, },
+      info: { ot: otData.result[0], },
     };
   };
 
@@ -29,9 +29,16 @@ class OTRealtimeCtrler extends BaseCtrler {
       };
     }
 
+    if (!req.params.id) {
+      return {
+        status: 400,
+        errMsg: 'did not specified device id',
+      };
+    }
+
     return {
       params: {
-        thing_id,
+        thing_id: req.params.id,
       },
     };
   };

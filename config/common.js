@@ -6,7 +6,7 @@ const common = {
   auth_white_list_outer: [
   ],
   THING_STATUS: {
-    // 停转启停
+    // 运转启停
     STOP: 0,
     RUNNING: 1,
   },
