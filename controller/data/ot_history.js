@@ -15,7 +15,7 @@ class OTHistoryCtrler extends BaseCtrler {
 
     return {
       status: 200,
-      info: { otData, },
+      info: { otData: otData.result, },
     };
   };
 
@@ -25,13 +25,22 @@ class OTHistoryCtrler extends BaseCtrler {
     if (!req.params) {
       return {
         status: 400,
-        errMsg: 'did not specified query parameters',
+        errMsg: 'did not specified query body',
       };
     }
 
+    if (!req.params.conditions) {
+      return {
+        status: 400,
+        errMsg: 'did not specified query conditions',
+      };
+    }
+
+    const conditions = JSON.parse(req.params.conditions);
+
     return {
       params: {
-        thing_id,
+        thing_id: conditions.thing_id,
         // starttime,
         // endtime,
       },
