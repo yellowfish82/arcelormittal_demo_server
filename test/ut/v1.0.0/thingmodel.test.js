@@ -22,10 +22,10 @@ describe('Use JEST to test an Arcelor Mittal Demo Restful API based on Express',
     test('try to create a thing model', async () => {
       const name = chance.word();
       const properties = [];
-      let n = chance.integer({ min: 1, max: 10 });
+      let n = chance.integer({ min: 1, max: 10, });
       while (n > 0) {
         n--;
-        const min = chance.floating({ fixed: 2, min: -10, max: 10 });
+        const min = chance.floating({ fixed: 2, min: -10, max: 10, });
         const max = min + 10;
         const name = chance.word();
 
@@ -33,14 +33,14 @@ describe('Use JEST to test an Arcelor Mittal Demo Restful API based on Express',
           name,
           min,
           max,
-        }
+        };
 
         if (n % 3 === 0) {
           const threshold = min + 5;
           property['alert_condition'] = {
             expression: configurations.common.CONDITION_EXPRESSION.LARGER,
             threshold,
-          }
+          };
         }
 
         properties.push(property);

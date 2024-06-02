@@ -5,7 +5,7 @@ const ThingInstance = require('../../service/db/ormapping/thing_instance');
 
 class QueryInstancesCtrler extends BaseCtrler {
   businessLogic = async (params) => {
-    const { conditions } = params;
+    const { conditions, } = params;
 
     const thingEntity = new ThingInstance();
     thingEntity.setValue(conditions);
@@ -14,7 +14,7 @@ class QueryInstancesCtrler extends BaseCtrler {
 
     return {
       status: 200,
-      info: { things: thingSet.result },
+      info: { things: thingSet.result, },
     };
   };
 
@@ -35,7 +35,7 @@ class QueryInstancesCtrler extends BaseCtrler {
 
     return {
       params: {
-        conditions
+        conditions,
       },
     };
   };

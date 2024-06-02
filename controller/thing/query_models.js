@@ -11,7 +11,7 @@ class QueryModelsCtrler extends BaseCtrler {
 
     return {
       status: 200,
-      info: { ThingModels: models.result },
+      info: { ThingModels: models.result, },
     };
   };
 

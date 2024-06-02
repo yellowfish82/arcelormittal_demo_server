@@ -33,7 +33,7 @@ describe('Use JEST to test an Arcelor Mittal Demo Restful API based on Express',
 
   describe(`GET /${v}/tm/get/:id`, () => {
     test('try to get a thing model', async () => {
-      const { model_id } = datapool;
+      const { model_id, } = datapool;
       const response = await request(app).get(`/${v}/tm/get/${model_id}`).send();
 
       expect(response.statusCode).toBe(200);
@@ -46,13 +46,13 @@ describe('Use JEST to test an Arcelor Mittal Demo Restful API based on Express',
 
   describe(`POST /${v}/ti`, () => {
     test('try to register a thing instance', async () => {
-      const { model } = datapool;
+      const { model, } = datapool;
       const response = await request(app).post(`/${v}/ti`).send({
         thing_model_id: model.id,
         name: chance.name(),
         brand: chance.animal(),
         note: chance.sentence(),
-        frequency: chance.integer({ min: 1, max: 4 }),
+        frequency: chance.integer({ min: 1, max: 4, }),
       });
 
       expect(response.statusCode).toBe(200);

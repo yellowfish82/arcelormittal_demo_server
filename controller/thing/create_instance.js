@@ -12,7 +12,7 @@ class CreateInstanceCtrler extends BaseCtrler {
     const { thing_instance, } = params;
     const instanceEntity = new ThingInstance();
     const sn = chance.string({ length: 8, alpha: true, });
-    const key = chance.string({ length: 10 });
+    const key = chance.string({ length: 10, });
     instanceEntity.setValue({
       ...thing_instance,
       sn,
@@ -40,7 +40,7 @@ class CreateInstanceCtrler extends BaseCtrler {
 
     return {
       params: {
-        thing_instance: req.body
+        thing_instance: req.body,
       },
     };
   };
