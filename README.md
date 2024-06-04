@@ -6,7 +6,11 @@ How to start a MQTT Server on mac
 brew install mosquitto
 
 2. launch mqtt server
+intel mac
 /usr/local/sbin/mosquitto -c /usr/local/etc/mosquitto/mosquitto.conf
+
+m3 mac
+/opt/homebrew/opt/mosquitto/sbin/mosquitto -c /opt/homebrew/etc/mosquitto/mosquitto.conf
 
 3. sub data from mqtt server through topic: 'test/topic' 
 mosquitto_sub -h localhost -t 'test/topic' -v
