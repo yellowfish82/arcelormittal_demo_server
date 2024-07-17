@@ -27,7 +27,7 @@ class GetModelCtrler extends BaseCtrler {
 
     return {
       status: 200,
-      info: { thingModel },
+      info: { thingModel, },
     };
   };
 
@@ -50,7 +50,7 @@ class GetModelCtrler extends BaseCtrler {
 
     return {
       params: {
-        thing_model_id: parseInt(req.params.id)
+        thing_model_id: parseInt(req.params.id),
       },
     };
   };

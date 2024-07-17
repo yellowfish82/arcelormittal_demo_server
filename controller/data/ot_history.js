@@ -5,10 +5,10 @@ const OT = require('../../service/db/ormapping/ot');
 
 class OTHistoryCtrler extends BaseCtrler {
   businessLogic = async (params) => {
-    const { thing_id, starttime, endtime } = params;
+    const { thing_id, starttime, endtime, } = params;
     const otEntity = new OT();
     otEntity.setValue({
-      thing_id
+      thing_id,
     });
     const sql = otEntity.querySQL();
     const otData = await service.dbService.query(sql);

@@ -11,7 +11,7 @@ class CreateModelCtrler extends BaseCtrler {
     const thingmodelEntity = new ThingModel();
     thingmodelEntity.setValue({
       name: thing_model.name,
-      description: thing_model.description
+      description: thing_model.description,
     });
     await service.dbService.add(thingmodelEntity.insertSQL());
 
@@ -28,7 +28,7 @@ class CreateModelCtrler extends BaseCtrler {
           thing_model_id: thingModel.id,
           name: p.name,
           max: p.max,
-          min: p.min
+          min: p.min,
         });
 
         await service.dbService.add(propertyEntity.insertSQL());
@@ -45,7 +45,6 @@ class CreateModelCtrler extends BaseCtrler {
 
           alertConditions.push(alertCondtionEntity.insertSQL());
         }
-
       } catch (error) {
         console.error(`add thing model property(${JSON.stringify(p)}): ${error}`);
       }
@@ -86,7 +85,7 @@ class CreateModelCtrler extends BaseCtrler {
 
     return {
       params: {
-        thing_model: req.body
+        thing_model: req.body,
       },
     };
   };

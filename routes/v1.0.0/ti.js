@@ -7,55 +7,55 @@ const router = new Router();
 module.exports = router;
 
 router.post('/', async (req, res, next) => {
-    try {
-        const result = await controllers.thing.createInstance(req);
+  try {
+    const result = await controllers.thing.createInstance(req);
 
-        const { status, message, } = result;
-        res.status(status).send(message);
-    } catch (error) {
-        next(error);
-    }
+    const { status, message, } = result;
+    res.status(status).send(message);
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.delete('/:id', async (req, res, next) => {
-    try {
-        const result = await controllers.thing.delInstance(req);
-        const { status, message } = result;
-        res.status(status).send(message);
-    } catch (error) {
-        next(error);
-    }
+  try {
+    const result = await controllers.thing.delInstance(req);
+    const { status, message, } = result;
+    res.status(status).send(message);
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.get('/get/:id', async (req, res, next) => {
-    try {
-        const result = await controllers.thing.getInstance(req);
+  try {
+    const result = await controllers.thing.getInstance(req);
 
-        const { status, message, } = result;
-        res.status(status).send(message);
-    } catch (error) {
-        next(error);
-    }
+    const { status, message, } = result;
+    res.status(status).send(message);
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.get('/query/:conditions', async (req, res, next) => {
-    try {
-        const result = await controllers.thing.queryInstances(req);
+  try {
+    const result = await controllers.thing.queryInstances(req);
 
-        const { status, message, } = result;
-        res.status(status).send(message);
-    } catch (error) {
-        next(error);
-    }
+    const { status, message, } = result;
+    res.status(status).send(message);
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.put('/:id', async (req, res, next) => {
-    try {
-        const result = await controllers.thing.updateInstance(req);
+  try {
+    const result = await controllers.thing.updateInstance(req);
 
-        const { status, message, } = result;
-        res.status(status).send(message);
-    } catch (error) {
-        next(error);
-    }
+    const { status, message, } = result;
+    res.status(status).send(message);
+  } catch (error) {
+    next(error);
+  }
 });

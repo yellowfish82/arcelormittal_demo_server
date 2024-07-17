@@ -31,7 +31,7 @@ class AlertDataCtrler extends BaseCtrler {
       };
     }
 
-    const { thing_id } = JSON.parse(req.params.conditions);
+    const { thing_id, } = JSON.parse(req.params.conditions);
 
     return {
       params: {
