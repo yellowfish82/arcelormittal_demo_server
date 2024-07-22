@@ -1,7 +1,7 @@
-# arcelormittal_demo_server
+## arcelormittal_demo_server
 this is a web server play a role like IIoT platform 
 
-How to start a MQTT Server on mac
+## How to start a MQTT Server on mac
 1. install
 ```
 brew install mosquitto
@@ -26,3 +26,10 @@ mosquitto_sub -h localhost -t 'test/topic' -v
 ```
 mosquitto_pub -h localhost -t 'test/topic' --repeat 10 -m 'aaa'
 ```
+
+## Chat with Ollama
+1. run ollama in local
+```
+docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+```
+
