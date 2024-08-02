@@ -53,7 +53,7 @@ const start = () => {
   });
 
   app.listen(configurations.env.port, () => {
-    console.log(`Arcelor Mittal server listening on port ${configurations.env.port}`);
+    console.log(`鼎捷 server listening on port ${configurations.env.port}`);
   });
 };
 
@@ -62,7 +62,7 @@ const fetchApp = (port) => {
   config(app);
 
   return app.listen(port || configurations.env.port, () => {
-    console.log(`Arcelor Mittal server listening on port ${port || configurations.env.port}`);
+    console.log(`鼎捷 server listening on port ${port || configurations.env.port}`);
   });
 };
 

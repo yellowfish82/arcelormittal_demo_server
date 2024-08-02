@@ -110,7 +110,7 @@ module.exports = {
   reporters: [
     'default',
     ['./node_modules/jest-html-reporter', {
-      'pageTitle': 'ArcelorMittal Test Report',
+      'pageTitle': '鼎捷软件IIoT Test Report',
       'includeFailureMsg': true,
       'includeConsoleLog': true,
     }]],

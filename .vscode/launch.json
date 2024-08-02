@@ -6,7 +6,7 @@
     "configurations": [
         {
             "command": "npm test",
-            "name": "Arcelor Mittal test",
+            "name": "鼎捷 test",
             "request": "launch",
             "type": "node-terminal"
         },
