@@ -141,6 +141,6 @@ Thumbs.db
 
 test-report.html
 coverage/
-uploads/*
+# uploads/*
 !uploads/
 files/
