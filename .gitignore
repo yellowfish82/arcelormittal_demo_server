@@ -141,6 +141,7 @@ Thumbs.db
 
 test-report.html
 coverage/
-# uploads/*
+uploads/*
 !uploads/
+!uploads/upload_contract_here.txt
 files/
